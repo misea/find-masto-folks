@@ -1,0 +1,70 @@
+[
+{"title":"Anthropology","source":"https://fivestone.github.io/fedi-anthropologists/",
+"dataSource": {
+    "type":"csv",
+    "file":"anthropologists.csv",
+    "url":"https://raw.githubusercontent.com/fivestone/fedi-anthropologists/main/resources/anthropologists.csv",
+    "columns":[
+        {
+            "name":"timestamp",
+            "type":"timestamp"
+        },
+        {
+            "name":"account",
+            "use":"handle"
+        },
+        {
+            "name":"link",
+            "use":"url"
+        },
+        {
+            "name":"twitter",
+            "use":"twitterHandle"
+        },
+        {
+            "name":"keywords",
+            "use":"tags",
+            "separator":"comma"
+        },
+        {
+            "name":"language",
+            "use":"language"
+        },
+        {
+            "name":"intro",
+            "use":"info"
+        }
+    ]
+    
+}
+},
+{"title":"Archaeology","source":"https://stark1tty.github.io/Mastodon-Archaeology/",
+"dataSource":{
+    "type":"csv",
+    "file":"users.csv"
+}},
+{"title":"Atmospheric science and air quality","source":"https://jorgesat.github.io/Mastodon-Atmospheric/"},
+{"title":"Bioinformatics","source":"https://emiller88.github.io/Mastodon-Bioinformatics/"},
+{"title":"Dendrochronology","source":"https://ronaldvisser.github.io/Mastodon-Dendrochronology/"},
+{"title":"Earth Science","source":"https://all-geo.org/mastodon-earthsci/"},
+{"title":"History and Philosophy of Science","source":"https://oliviodare.github.io/mastodon-hps/",
+"dataSource":{
+    "type":"csv",
+    "file":"hpsers.csv"
+}},
+{"title":"Islamic Studies/Middle Eastern Studies/Islamicate Studies/Oriental Studies","source":"https://florisre.github.io/mastodon-iranian-studies/"},
+{"title":"Marketing and Consumer Research","source":"https://lpomfret.github.io/Mastodon-Marketing/"},
+{"title":"Nuclear Fusion","source":"https://jhillairet.github.io/Mastodon-Nuclear-Fusion/"},
+{"title":"Open Science","source":"https://germanrepro.github.io/Mastodon-OpenScience/"},
+{"title":"Philosophers and Philosophy Teachers","source":"https://eyssette.github.io/Mastodon-Philosophy/"},
+{"title":"Political Scientists","source":"https://brentonpeterson.github.io/Mastodon-PoliScientists/"},
+{"title":"Psychology","source":"https://kaitclark.github.io/mastodon-psychology/"},
+{"title":"Public Policy","source":"https://howlettm.github.io/Mastodon-Policy/"},
+{"title":"Science and Technology Studies (STS)","source":"https://jwyg.github.io/mastodon-sts/",
+"dataSource":{
+    "type":"csv",
+    "file":"sts.csv"
+}},
+{"title":"Semantic Web+","source":"https://semantisch.github.io/SemanticWeb/"},
+{"title":"Sociology","source":"https://trutzig89182.github.io/Mastodon-Sociologists/"}
+]
