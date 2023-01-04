@@ -1,3 +1,4 @@
+// © 2023 Mark Igra <markigra@sciences.social>
 import { useState, useEffect } from "react";
 import {useLoaderData, Outlet, Link, useLocation } from "react-router-dom";
 import SearchForm from "./SearchForm.js";

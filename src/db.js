@@ -1,4 +1,5 @@
   
+// © 2023 Mark Igra <markigra@sciences.social>
 import combinedData from "./search_data/combined.json";
 import escapeRegExp from "lodash.escaperegexp"
 

@@ -1,3 +1,4 @@
+// © 2023 Mark Igra <markigra@sciences.social>
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import "./styles/mastodon-light.scss";

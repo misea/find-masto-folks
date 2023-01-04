@@ -1,3 +1,4 @@
+// © 2023 Mark Igra <markigra@sciences.social>
 import { redirect } from 'react-router-dom';
 import * as Mastodon from "./Mastodon";
 import { getPostLoginRedirect, clearPostLoginRedirect } from './LoginForm';

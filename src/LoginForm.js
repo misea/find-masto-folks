@@ -1,3 +1,4 @@
+// © 2023 Mark Igra <markigra@sciences.social>
 import {Form, useActionData, useSearchParams, redirect } from "react-router-dom"
 import isValidDomain from "is-valid-domain";
 import * as Mastodon from "./Mastodon"

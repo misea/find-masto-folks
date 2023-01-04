@@ -1,3 +1,4 @@
+// © 2023 Mark Igra <markigra@sciences.social>
 import { useFetcher, Link } from "react-router-dom";
 
 //TODO: Merge these buttons

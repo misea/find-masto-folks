@@ -1,3 +1,4 @@
+// © 2023 Mark Igra <markigra@sciences.social>
 import {useLoaderData} from "react-router-dom";
 import SearchForm from "./SearchForm.js";
 import * as db from "./db.js";

@@ -1,3 +1,4 @@
+// © 2023 Mark Igra <markigra@sciences.social>
 import { Form, useSubmit } from "react-router-dom"
 
 export default function SearchForm({ q, action, fieldId, fields }) {

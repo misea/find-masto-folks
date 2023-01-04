@@ -1,3 +1,4 @@
+// © 2023 Mark Igra <markigra@sciences.social>
 import {Suspense, useEffect, useState} from "react";
 import { defer, useLoaderData, Await, useAsyncValue, Link } from "react-router-dom";
 import { getAccount, getPosts, isLoggedIn, getUserFollowsImmediate } from "./Mastodon";

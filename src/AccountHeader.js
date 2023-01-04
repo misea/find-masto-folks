@@ -1,3 +1,4 @@
+// © 2023 Mark Igra <markigra@sciences.social>
 import { PlainFollowButton, LoginFollowButton } from "./FollowButton";
 import { getUserInfo } from "./Mastodon";
 export default function AccountHeader({info, loggedIn, loginUrl, userFollows}) {

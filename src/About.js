@@ -1,3 +1,4 @@
+// © 2023 Mark Igra <markigra@sciences.social>
 import { isLoggedIn } from "./Mastodon";
 import LoginForm from "./LoginForm";
 

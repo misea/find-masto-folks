@@ -1,3 +1,4 @@
+// © 2023 Mark Igra <markigra@sciences.social>
 import {getUserInfo, isLoggedIn, getCurrentInstance} from "./Mastodon";
 import LoginForm from "./LoginForm";
 import { useLocation } from "react-router-dom";

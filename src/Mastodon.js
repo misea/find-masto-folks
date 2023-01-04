@@ -1,5 +1,5 @@
+// © 2023 Mark Igra <markigra@sciences.social>
 const CONFIG_KEY = "masto_server";
-
 
 //Cache for whoever the user is following
 let following = null;

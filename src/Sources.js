@@ -1,3 +1,4 @@
+// © 2023 Mark Igra <markigra@sciences.social>
 import dataSources from './search_data/data_sources.json';
 
 export default function Sources() {

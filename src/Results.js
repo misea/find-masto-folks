@@ -1,3 +1,4 @@
+// © 2023 Mark Igra <markigra@sciences.social>
 import Person from "./Person";
 import { isLoggedIn, getUserHandle } from "./Mastodon";
 
