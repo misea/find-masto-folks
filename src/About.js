@@ -26,7 +26,7 @@ export default function About() {
             If #1 is OK, how would you like to handle requests to add to your list? (See below)
           </li>
           <li>
-            If #1 is not OK, would individual opt-ins from people on the list be ok.
+            If #1 is not OK, would individual opt-ins from people on the list be acceptable?
           </li>
         </ol>
       
