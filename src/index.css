@@ -89,7 +89,6 @@ h1 {
 }
 
 #browse a {
-  font-size: large;
   color: hsl(239.6153846154deg, 100%, 71.4117647059%)
 }
 
@@ -205,14 +204,14 @@ ol.numbered {
   display:none;
 }
 
-@media screen and (min-width:600px) {
+@media screen and (min-width:640px) {
   .column.nofocus {
     display:flex;
   }
 }
 
 
-@media screen and (min-width:600px) {
+@media screen and (min-width:640px) {
   .phone-nav{
     display:none;
   }
@@ -220,4 +219,13 @@ ol.numbered {
     display:flex;
   }
 
+  #browse a {
+    font-size: larger;
+  }
+  
+}
+
+.app-holder>div {
+  padding-left: 10px;
+  padding-right: 10px;
 }

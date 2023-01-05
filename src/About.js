@@ -42,13 +42,13 @@ links to a variety of lists of academics in different disciplines. Because many 
   to  <a href="https://nathanlesage.github.io/academics-on-mastodon/" target="_blank" rel="noreferrer">
       Academics of Mastodon</a> for the full list of disciplines. I'm reaching out to the folks who own those lists to see if we can work out a way to manage them cooperatively. 
       There are several options. We might
+      </p>
       <ol className="numbered">
         <li>Keep things as they are, and allow you to sign up with the list owner.</li>
         <li>Provide a custom form that verifies your account, collects information and sends it to the list owner.</li>
         <li>Create a centralized list either as follows to an Mastodon account managed by the list owner, 
           or in a database, moderated by list owners.</li>
       </ol>
-      </p>
   <h2>Do I have to login?</h2>
   <p>You can browse public information without logging in. In order to follow and see non-public profiles you have permissions to, you need to log into your mastodon instance. I would like to add an "Export to CSV" option so that
     people can still make use of the data without logging in.
