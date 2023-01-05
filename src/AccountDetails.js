@@ -29,7 +29,7 @@ export default function AccountDetails() {
     //TODO: Move these to defer as well? But can only Await one promise so have to do some kind of "all"
     
     const errorElement = 
-        isLoggedIn ? <div class="error">Couldn't load data for {handle}</div> :
+        isLoggedIn() ? <div class="error">Couldn't load data for {handle}</div> :
              <>
                 <div className="app-text">
                     <p>It looks like you cannot access information about this user without logging in.</p>
