@@ -9,10 +9,9 @@ import {Helmet} from "react-helmet-async";
 
 export async function loader({request, params}) {
     try {
-        const curUrl = new URL(request.url);
         //Returns a promise. Going to defer/Await this
         const account = getAccount(params.accountHandle);
-        return defer({account, handle:params.accountHandle, curUrl});
+        return defer({account, handle:params.accountHandle});
     } catch (e) {
         console.error(e);
         return {account:{handle:params.accountHandle}, error:e}
@@ -20,7 +19,7 @@ export async function loader({request, params}) {
 }
 
 export default function AccountDetails() {
-    const {account, curUrl, handle } = useLoaderData();
+    const {account, handle } = useLoaderData();
 
     //TODO: Move these out into parent.
     const accountUrl = `/search/accounts/${handle}${window.location.search}`
@@ -34,7 +33,7 @@ export default function AccountDetails() {
                 <div className="app-text">
                     <p>It looks like you cannot access information about this user without logging in.</p>
                 </div>
-                <LoginForm returnTo={curUrl} />
+                <LoginForm returnTo={accountUrl} />
             </>
     
     return (
@@ -52,7 +51,7 @@ export default function AccountDetails() {
             errorElement
           }
         >
-          <AccountDetailsDeferred loginUrl={loginUrl} curUrl={curUrl} />
+          <AccountDetailsDeferred loginUrl={loginUrl} curUrl={accountUrl} />
         </Await>
       </Suspense>
      </div>
