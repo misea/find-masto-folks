@@ -61,7 +61,7 @@ links to a variety of lists of academics in different disciplines. Because many 
   <p>
     <a href="https://sciences.social/@markigra" target="_blank" rel="noreferrer">Mark Igra</a>, the founder 
     of <a href="https://sciences.social/about" target="_blank" rel="noreferrer">sciences.social</a> built this over winter break 2022. I welcome
-    comments and suggestions. The code (such as it is) is on github.
+    comments and suggestions. The code (such as it is) is on <a href="https://github.com/misea/find-masto-folks">github.</a>
     </p>
   <h2>Shouldn't he have been working on his PhD instead? </h2>
   <p>That is a frequently asked question.</p>
