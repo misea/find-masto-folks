@@ -191,6 +191,12 @@ a.phone-nav:hover {
   opacity: .8;
 }
 
+ol.numbered {
+  padding-top:12px;
+  list-style-type: decimal;
+  margin-left: 40px;
+}
+
 .column.nofocus {
   display:none;
 }
