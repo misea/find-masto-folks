@@ -1,70 +1,329 @@
 [
-{"title":"Anthropology","source":"https://fivestone.github.io/fedi-anthropologists/",
-"dataSource": {
-    "type":"csv",
-    "file":"anthropologists.csv",
-    "url":"https://raw.githubusercontent.com/fivestone/fedi-anthropologists/main/resources/anthropologists.csv",
-    "columns":[
+  {
+    "title": "Anthropology",
+    "source": "https://fivestone.github.io/fedi-anthropologists/",
+    "owners": [
+      {
+        "handle": "@anthro@fivest.one"
+      }
+    ],
+    "signUp": {
+      "type": "form",
+      "url": "https://docs.google.com/forms/d/1czaGLjjvYJ6iUlnwZ56kGCjNMqUYgHtQdhG3fwRSVTU"
+    },
+    "dataSource": {
+      "type": "csv",
+      "file": "anthropologists.csv",
+      "url": "https://raw.githubusercontent.com/fivestone/fedi-anthropologists/main/resources/anthropologists.csv",
+      "columns": [
         {
-            "name":"timestamp",
-            "type":"timestamp"
+          "name": "timestamp",
+          "type": "timestamp"
         },
         {
-            "name":"account",
-            "use":"handle"
+          "name": "account",
+          "use": "handle"
         },
         {
-            "name":"link",
-            "use":"url"
+          "name": "link",
+          "use": "url"
         },
         {
-            "name":"twitter",
-            "use":"twitterHandle"
+          "name": "twitter",
+          "use": "twitterHandle"
         },
         {
-            "name":"keywords",
-            "use":"tags",
-            "separator":"comma"
+          "name": "keywords",
+          "use": "tags",
+          "separator": "comma"
         },
         {
-            "name":"language",
-            "use":"language"
+          "name": "language",
+          "use": "language"
         },
         {
-            "name":"intro",
-            "use":"info"
+          "name": "intro",
+          "use": "info"
         }
+      ]
+    }
+  },
+  {
+    "title": "Archaeology",
+    "source": "https://stark1tty.github.io/Mastodon-Archaeology/",
+    "owners": [
+      {
+        "handle": "@NikaShilobod@fediscience.org",
+        "name": "Nika Shilobod"
+      },
+      {
+        "handle": "@andreatitolo@archaeo.social"
+      },
+      {
+        "handle": "@RonaldVisser@akademienl.social"
+      }
+    ],
+    "dataSource": {
+      "type": "csv",
+      "file": "users.csv"
+    }
+  },
+  {
+    "title": "Atmospheric science and air quality",
+    "source": "https://jorgesat.github.io/Mastodon-Atmospheric/",
+    "owners": [
+      {
+        "handle": "@jorge@scholar.social",
+        "name": "Jorge Saturno"
+      },
+      {
+        "handle": "@rachelOB1@mastodon.social",
+        "name": "Rachel O'Brien"
+      }
+    ],
+    "signUp": {
+      "type": "form",
+      "url": "https://forms.gle/z9HQNhWFGzGnW5Xa7"
+    }
+  },
+  {
+    "title": "Bioinformatics",
+    "source": "https://emiller88.github.io/Mastodon-Bioinformatics/",
+    "owners": [
+      {
+        "handle": "@emiller@genomic.social",
+        "name": "Edmund Miller"
+      }
+    ],
+    "signUp": {
+      "type": "email",
+      "email": "edmund.miller@utdallas.edu"
+    }
+  },
+  {
+    "title": "Dendrochronology",
+    "source": "https://ronaldvisser.github.io/Mastodon-Dendrochronology/",
+    "owners": [
+      {
+        "handle": "@RonaldVisser@akademienl.social",
+        "name": "Ronald Visser"
+      }
+    ],
+    "signUp": {
+      "type": "email",
+      "email": "r.m.visser@saxion.nl"
+    }
+  },
+  {
+    "title": "Earth Science",
+    "source": "https://all-geo.org/mastodon-earthsci/",
+    "signUp": {
+      "type": "form",
+      "url": "https://forms.gle/iYvKHFWajKjEewsY7"
+    },
+    "owners": [
+      {
+        "handle": "@allochthonous@mastodon.social"
+      }
+    ],
+    "dataSource": {
+      "type": "csv",
+      "url": "https://raw.githubusercontent.com/allochthonous/mastodon-earthsci/main/resources/earthsci.csv"
+    }
+  },
+  {
+    "title": "History and Philosophy of Science",
+    "source": "https://oliviodare.github.io/mastodon-hps/",
+    "signUp": {
+      "type": "form",
+      "url": "https://forms.office.com/r/2VQ01jHzZg"
+    },
+    "owners": [
+      {
+        "handle": "@oliviodare@scholar.social"
+      }
+    ],
+    "dataSource": {
+      "type": "csv",
+      "file": "hpsers.csv"
+    }
+  },
+  {
+    "title": "Islamic Studies/Middle Eastern Studies/Islamicate Studies/Oriental Studies",
+    "source": "https://florisre.github.io/mastodon-iranian-studies/",
+    "owners": [
+      {
+        "handle": "@floris@freiburg.social",
+        "name": "Floris Remmert"
+      }
+    ],
+    "signUp": {
+      "type": "DM"
+    }
+  },
+  {
+    "title": "Marketing and Consumer Research",
+    "source": "https://lpomfret.github.io/Mastodon-Marketing/",
+    "dataSource": {
+      "type":"csv",
+      "url":"https://raw.githubusercontent.com/lpomfret/Mastodon-Marketing/main/resources/users.csv"
+    },
+    "owners": [
+      {
+        "handle": "@liampomfret@mastodon.social"
+      }
+    ],
+    "signUp": {
+      "type": "email",
+      "email": "l.pomfret@business.uq.edu.au"
+    }
+  },
+  {
+    "title": "Nuclear Fusion",
+    "source": "https://jhillairet.github.io/Mastodon-Nuclear-Fusion/",
+    "owners": [
+      {
+        "handle": "@jhillairet@sciences.re"
+      }
+    ],
+    "signUp": [
+      {
+        "type": "DM",
+        "handle": "@jhillairet@sciences.re"
+      }
     ]
-    
-}
-},
-{"title":"Archaeology","source":"https://stark1tty.github.io/Mastodon-Archaeology/",
-"dataSource":{
-    "type":"csv",
-    "file":"users.csv"
-}},
-{"title":"Atmospheric science and air quality","source":"https://jorgesat.github.io/Mastodon-Atmospheric/"},
-{"title":"Bioinformatics","source":"https://emiller88.github.io/Mastodon-Bioinformatics/"},
-{"title":"Dendrochronology","source":"https://ronaldvisser.github.io/Mastodon-Dendrochronology/"},
-{"title":"Earth Science","source":"https://all-geo.org/mastodon-earthsci/"},
-{"title":"History and Philosophy of Science","source":"https://oliviodare.github.io/mastodon-hps/",
-"dataSource":{
-    "type":"csv",
-    "file":"hpsers.csv"
-}},
-{"title":"Islamic Studies/Middle Eastern Studies/Islamicate Studies/Oriental Studies","source":"https://florisre.github.io/mastodon-iranian-studies/"},
-{"title":"Marketing and Consumer Research","source":"https://lpomfret.github.io/Mastodon-Marketing/"},
-{"title":"Nuclear Fusion","source":"https://jhillairet.github.io/Mastodon-Nuclear-Fusion/"},
-{"title":"Open Science","source":"https://germanrepro.github.io/Mastodon-OpenScience/"},
-{"title":"Philosophers and Philosophy Teachers","source":"https://eyssette.github.io/Mastodon-Philosophy/"},
-{"title":"Political Scientists","source":"https://brentonpeterson.github.io/Mastodon-PoliScientists/"},
-{"title":"Psychology","source":"https://kaitclark.github.io/mastodon-psychology/"},
-{"title":"Public Policy","source":"https://howlettm.github.io/Mastodon-Policy/"},
-{"title":"Science and Technology Studies (STS)","source":"https://jwyg.github.io/mastodon-sts/",
-"dataSource":{
-    "type":"csv",
-    "file":"sts.csv"
-}},
-{"title":"Semantic Web+","source":"https://semantisch.github.io/SemanticWeb/"},
-{"title":"Sociology","source":"https://trutzig89182.github.io/Mastodon-Sociologists/"}
+  },
+  {
+    "title": "Open Science",
+    "source": "https://germanrepro.github.io/Mastodon-OpenScience/",
+    "owners": [
+      {
+        "name": "Rima-Maria Rahal",
+        "handle": "@rmrahal@nerdculture.de",
+        "email": "rahal.rimamaria@gmail.com"
+      },
+      {
+        "name": "German Reproducibility Network",
+        "url": "https://reproducibilitynetwork.de/"
+      }
+    ],
+    "signUp": {
+      "type": "DM",
+      "handle": "@rmrahal@nerdculture.de",
+      "email": "rahal.rimamaria@gmail.com"
+    }
+  },
+  {
+    "title": "Philosophers and Philosophy Teachers",
+    "source": "https://eyssette.github.io/Mastodon-Philosophy/",
+    "owners": [
+      {
+        "handle": "@eyssette@scholar.social"
+      }
+    ],
+    "signUp": {
+      "type": "DM",
+      "handle": "@eyssette@scholar.social"
+    }
+  },
+  {
+    "title": "Political Scientists",
+    "source": "https://brentonpeterson.github.io/Mastodon-PoliScientists/",
+    "owners": [
+      {
+        "name": "Brenton D. Peterson",
+        "handle": "@brenton_peterson@sciences.social",
+        "email": "brenton@sababi.org"
+      }
+    ],
+    "signUp": {
+      "type": "form",
+      "url": "https://forms.gle/UGyDrnoAg7wh2C3X6",
+      "handle": "@brenton_peterson@sciences.social",
+      "email": "brenton@sababi.org"
+    }
+  },
+  {
+    "title": "Psychology",
+    "source": "https://kaitclark.github.io/mastodon-psychology/",
+    "owners": [
+      {
+        "handle": "@kaitclark@mastodon.social",
+        "email": "kait.clark@uwe.ac.uk"
+      }
+    ],
+    "signUp": {
+      "type": "form",
+      "url": "https://go.uwe.ac.uk/psychmastodon"
+    }
+  },
+  {
+    "title": "Public Policy",
+    "source": "https://howlettm.github.io/Mastodon-Policy/",
+    "owners": [
+      {
+        "email": "mi9cal@gmail.com",
+        "name": "Michael Howlett"
+      }
+    ],
+    "signUp": {
+      "type": "link",
+      "url": "https://howlettm.github.io/Mastodon-Policy/#add_remove_info"
+    }
+  },
+  {
+    "title": "Science and Technology Studies (STS)",
+    "source": "https://jwyg.github.io/mastodon-sts/",
+    "owners": [
+      {
+        "handle": "@jwyg@post.lurk.org"
+      }
+    ],
+    "signUp": {
+      "type": "form",
+      "url": "https://forms.office.com/r/7jpRXE6XQT"
+    },
+    "dataSource": {
+      "type": "csv",
+      "file": "sts.csv"
+    }
+  },
+  {
+    "title": "Semantic Web+",
+    "source": "https://semantisch.github.io/SemanticWeb/",
+    "owners": [
+      {
+        "handle": "@semantic@fediscience.org"
+      }
+    ],
+    "signUp": {
+      "type": "form",
+      "url": "https://forms.gle/pjNmNG6xwzU28Y3o6"
+    }
+  },
+  {
+    "title": "Sociology",
+    "source": "https://trutzig89182.github.io/Mastodon-Sociologists/",
+    "owners": [
+      {
+        "name": "David Adler",
+        "handle": "@perspektivbrocken@social.tchncs.de",
+        "email": "david.adler@uni-oldenburg.de"
+      },
+      {
+        "name": "Thomas Haase",
+        "handle": "@thhaase@social.tchncs.de"
+      },
+      {
+        "name": "Hendrik Erz",
+        "handle": "@hendrikerz@scholar.social"
+      }
+    ],
+    "signUp": {
+      "type": "form",
+      "url": "https://trutzig89182.github.io/AoM-add-user/add-user.html",
+      "email": "david.adler@uni-oldenburg.de",
+      "handle": "@perspektivbrocken@social.tchncs.de"
+    }
+  }
 ]

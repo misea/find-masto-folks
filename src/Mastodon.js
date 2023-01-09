@@ -340,13 +340,14 @@ export async function getAccount(handle) {
 }
 
 export function canonicalHandle(handle, userInstance = getCurrentInstance()) {
-    if(!handle.startsWith("@")) {
-        handle = "@" + handle;
-    }
-    if (handle.lastIndexOf("@") === 0 && userInstance) {
-        handle = `${handle}@${userInstance}`
-    }
-    return handle;
+  handle = handle.trim();
+  if(!handle.startsWith("@")) {
+      handle = "@" + handle;
+  }
+  if (handle.lastIndexOf("@") === 0 && userInstance) {
+      handle = `${handle}@${userInstance}`
+  }
+  return handle;
 }
 
 export async function follow(handle) {

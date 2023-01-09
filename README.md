@@ -4,7 +4,8 @@ This prototype web app makes it easy to find, browse and easily follow academic 
 
 ## Where does the data come from?
 
-The wonderful [Academics of Mastodon](https://nathanlesage.github.io/academics-on-mastodon/) site contains links to a variety of lists of academics in different disciplines. Because many of the lists are based on the [List of Sociologists](https://trutzig89182.github.io/Mastodon-Sociologists/) maintained by [David Adler](https://social.tchncs.de/@perspektivbrocken) et al. it was possible to combine them. For this prototype, the data is just loaded into your web browser. A later version will store it in an online database.
+The wonderful [Academics of Mastodon](https://nathanlesage.github.io/academics-on-mastodon/) site contains links to a variety of lists of academics in different disciplines. Because many of the lists are based on the [List of Sociologists](https://trutzig89182.github.io/Mastodon-Sociologists/) maintained by [David Adler](https://social.tchncs.de/@perspektivbrocken) et al. this app can read the csv files. 
+This application does not rely on a centralized database at this time. 
 
 ## How do I add myself, or update my info?
 
@@ -12,7 +13,7 @@ You can't do that here, yet. For now, if you want to be on these lists, use the 
 
 ## Are you planning to add more academic disciplines?
 
-Yes, assuming people approve, I'd like to do that right after I allow people to add and update their own information.
+Yes, assuming people approve. Contact me if you have an existing list to add, or if you want to add a new discipline.
 
 ## Who built this?
 
@@ -26,13 +27,6 @@ Yes, that is a frequently asked question.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-THe main difference between building this app and a standard react app is that you need
-to retrieve the current data from the sources, as I don't duplicate it here. After the usual
-`npm install` step you need to do.
-
-## `npm run getdata`
-
-After that, you can run the standard scripts described below.
 
 ## Available Scripts
 

@@ -229,3 +229,19 @@ ol.numbered {
   padding-left: 10px;
   padding-right: 10px;
 }
+
+.source {
+  margin-bottom: 8px;
+}
+
+.source a {
+  font-weight: bold;
+}
+
+.source .owner a {
+  font-weight: normal
+}
+
+.source.prose .owners {
+  display:inline
+}

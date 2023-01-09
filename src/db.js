@@ -1,49 +1,99 @@
   
 // © 2023 Mark Igra <markigra@sciences.social>
-import combinedData from "./search_data/combined.json";
 import escapeRegExp from "lodash.escaperegexp"
+import Papa from "papaparse"
+import { canonicalHandle } from "./Mastodon"
+import dataSources from "./search_data/data_sources.json"
 
-function joinClean(...args) {return args.filter(arg=>arg!== undefined && arg !== null).join(" ")}
-
-const cleanData = combinedData.filter(r=>r.account && r.account.indexOf("@") !== -1)
-cleanData.forEach(r=>{
-  r.searchText = joinClean(r.account, r.name, r.field, r.keywords, r.intro)
-});
-
-function cleanKey(text) {return text.replaceAll(/[ &+()]/g, "-").replaceAll(/-+/g, "-").toLowerCase()}
+let combinedData = null;
 const byField = new Map();
-cleanData.forEach(r=>{
-  const fieldKey = cleanKey(r.field);
-  let fieldData = byField.get(fieldKey);
-  if (!fieldData) {
-    const keywords = new Set();
-    const accountHandles = new Set();
-    accountHandles.add(r.account)
-    if (r.keywords) {
-      r.keywords.split(/,| /).forEach(w=>keywords.add(w));
-    }
-    byField.set(fieldKey, {fieldKey:fieldKey, field:r.field, accounts:[r], accountHandles:accountHandles, keywords:keywords})
-  } else if(!fieldData.accountHandles.has(r.account)) { //There are dups in some sets
-    if (r.keywords) {
-      r.keywords.split(/,/).forEach(w=>fieldData.keywords.add(w));
-    }
-    fieldData.accountHandles.add(r.account) 
-    fieldData.accounts.push(r);
+
+async function loadData(listInfo) {
+  let downloadUrl = listInfo?.dataSource?.url;
+  if (!downloadUrl) {
+    const {host, pathname} = new URL(listInfo.source);
+    const repo = host.split(".")[0]
+    const sourceFileName = listInfo?.dataSource?.file || "users.csv";
+    downloadUrl = `https://raw.githubusercontent.com/${repo}${pathname}/main/resources/${sourceFileName}`  
   }
-})
 
+  function joinClean(...args) {return args.filter(arg=>arg!== undefined && arg !== null).join(" ")}
+  return loadCSV(downloadUrl).then((loaded)=>{
+    let records = loaded.data
+    .filter(record=>record.account && record.account.indexOf("@") !== -1)
+    .map(record=>{
+      record.account = canonicalHandle(record.account);
+      record.name = record.name && record.name !== "–" ? record.name.trim() : record.account.split("@")[1];
+      record.field = listInfo.title;
+      record.searchText = joinClean(record.account, record.name, record.field, record.keywords, record.intro);
+      return record;
+    });
+    
+    records.sort((a, b)=>{
+      return a.name.localeCompare(b.name);
+    });
+    return records;
 
-const departments = [];
-for(const [fieldKey, data] of byField) {
-  departments.push({id:fieldKey, title:data.field, keywords:Array.from(data.keywords).sort()});
+  });
 }
 
-export async function getFields() {
+async function loadCSV(url) {
+  return new Promise((resolve, reject)=>{
+    Papa.parse(url, {download:true, header:true, complete:resolve, error:reject})
+  });
+}
+
+
+function cleanKey(text) {return text.replaceAll(/[ &+()]/g, "-").replaceAll(/-+/g, "-").toLowerCase()}
+
+
+const departments = dataSources.map((dataSource)=>{
+  return {
+    id:cleanKey(dataSource.title), 
+    title:dataSource.title
+  }
+});
+
+export function getFields() {
     return departments;
 }
 
+export async function ensureFieldData(fieldKey) {
+  let fieldData = byField.get(fieldKey);
+  if (fieldData) {
+    return fieldData;
+  } else {
+    const dataSource = dataSources.find((ds)=>cleanKey(ds.title) === fieldKey);
+    if (!dataSource) {
+      throw new Error("Could not find data source for " + fieldKey);
+    }
+    fieldData = await loadData(dataSource);
+    byField.set(fieldKey, {id:fieldKey, title:dataSource.title, accounts:fieldData});
+    return fieldData
+  }
+}
+
+export async function ensureAllFieldData() {
+  if (combinedData) {
+    return combinedData;
+  }
+  const promises = [];
+  dataSources.forEach(dataSource=>{
+    const fieldId = cleanKey(dataSource.title);
+    if (!byField.has(fieldId)) {
+      promises.push(ensureFieldData(fieldId));
+    }
+  })
+  await Promise.all(promises);
+
+  combinedData = [].concat(...Array.from(byField.values()).map(f=>f.accounts));
+
+
+  
+}
+
+
 export async function getPeople(fieldId, queryString) {
-    // await fakeNetwork(fieldId);
     if (queryString) {
       queryString = queryString.trim();
       if (queryString === "") {
@@ -55,9 +105,11 @@ export async function getPeople(fieldId, queryString) {
       return [];
 
     if (fieldId) {
+      await ensureFieldData(fieldId);
       return filterByQueryString(byField.get(fieldId).accounts, queryString);
     } else {
-      return filterByQueryString(cleanData, queryString)
+      await ensureAllFieldData();
+      return filterByQueryString(combinedData, queryString)
     }
 }
 
@@ -79,18 +131,7 @@ function filterByQueryString(accounts, queryString) {
   return matchCounts.filter(x=>x.n > 0).sort((a,b)=>b.n-a.n).map(x=>x.account)
 }
 
-// let fakeCache = {};
-// async function fakeNetwork(key) {
-//     if (!key) {
-//       fakeCache = {};
-//     }
-  
-//     if (fakeCache[key]) {
-//       return;
-//     }
-  
-//     fakeCache[key] = true;
-//     return new Promise(res => {
-//       setTimeout(res, Math.random() * 800);
-//     });
-//   }
+export function getDataSourceInfo(sourceId) {
+  const dataSource = dataSources.find((source)=>cleanKey(source.title) === sourceId)
+  return dataSource || dataSources.find(source=>source.title === sourceId)
+}
