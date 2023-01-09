@@ -72,11 +72,21 @@ const router = createBrowserRouter([
       const follow = fd.get("follow");
       const unfollow = fd.get("unfollow");
       if (follow) {
-        const following = await Mastodon.follow(follow);
-        return following;
+        try {
+          const following = await Mastodon.follow(follow);
+          return following;  
+        } catch (e) {
+          console.error(e);
+          return false;
+        }
       } else {
-        const following = await Mastodon.unfollow(unfollow);
-        return following;
+        try {
+          const following = await Mastodon.unfollow(unfollow);
+          return following;  
+        } catch (e) {
+          console.error(e);
+          return true;
+        }
       }
     }
   }
