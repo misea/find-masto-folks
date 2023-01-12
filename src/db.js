@@ -14,7 +14,7 @@ async function loadData(listInfo) {
     const {host, pathname} = new URL(listInfo.source);
     const repo = host.split(".")[0]
     const sourceFileName = listInfo?.dataSource?.file || "users.csv";
-    downloadUrl = `https://raw.githubusercontent.com/${repo}${pathname}/main/resources/${sourceFileName}`  
+    downloadUrl = `https://raw.githubusercontent.com/${repo}${pathname}main/resources/${sourceFileName}`  
   }
 
   function joinClean(...args) {return args.filter(arg=>arg!== undefined && arg !== null).join(" ")}
