@@ -124,8 +124,8 @@ function filterByQueryString(accounts, queryString) {
     return accounts;
   }
 
+  const re = reFromQueryString(queryString);
   const matchCounts = accounts.map(account=>{
-    const re = reFromQueryString(queryString);
     return {n:Array.from(account.searchText.matchAll(re)).length, account:account};
   });
   return matchCounts.filter(x=>x.n > 0).sort((a,b)=>b.n-a.n).map(x=>x.account)
