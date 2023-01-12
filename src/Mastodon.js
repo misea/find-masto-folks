@@ -184,7 +184,7 @@ async function createApp(instanceName, redirectURL) {
     const res = await fetch(url, {
       method: "POST",
       body: JSON.stringify({
-        client_name: "Find Scientists",
+        client_name: process.env.REACT_APP_NAME,
         redirect_uris: redirectURL,
         scopes: "read write:follows",
       }),
