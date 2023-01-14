@@ -22,7 +22,7 @@ export default function Sources() {
 export function SourceDescription({ source }) {
   return <div className={`app-text`} >
     <p>
-    The accounts shown here are a view of the <a href={source.source} target="_blank" rel="noreferrer">{source.title}</a> list managed 
+    The accounts shown here are from the <a href={source.source} target="_blank" rel="noreferrer">{source.title}</a> list managed 
     by {
         source.owners.map((owner, index, owners) =>
           <span key={owner.handle || owner.email}>
@@ -33,7 +33,7 @@ export function SourceDescription({ source }) {
       }.
       </p>
       <p>
-      To add remove yourself from the list or to modify your information, see the <a href={source.source} target="_blank" rel="noreferrer">list page</a>.
+      To add or remove yourself from the list or to modify your information, see the <a href={source.source} target="_blank" rel="noreferrer">list page</a>.
       </p>   
   </div>
 }
