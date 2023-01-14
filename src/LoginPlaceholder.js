@@ -3,7 +3,7 @@ import {getUserInfo, isLoggedIn, getCurrentInstance} from "./Mastodon";
 import LoginForm from "./LoginForm";
 import { useLocation } from "react-router-dom";
 import { getDataSourceInfo } from "./db";
-import { Source } from "./Sources";
+import { SourceDescription } from "./Sources";
 
 export default function LoginPlaceholder() {
     const location = useLocation();
@@ -40,5 +40,5 @@ function SourceSummary({fieldId}) {
   if (!sourceInfo) {
     return "";
   }
-  return <Source source={sourceInfo} prose={true} />
+  return <SourceDescription source={sourceInfo} />
 }

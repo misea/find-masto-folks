@@ -252,7 +252,7 @@ async function postJson(loginInfo, path, body) {
 const localAccounts = new Map();
 const publicAccounts = new Map();
 
-function splitHandle(handle) {
+export function splitHandle(handle) {
     const a = handle.split("@");
     return {userName:a[a.length - 2], instance:a[a.length - 1]}
 }
