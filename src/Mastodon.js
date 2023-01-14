@@ -308,7 +308,7 @@ export async function getLocalAccount(handle) {
 export async function getAccount(handle) {
     handle = canonicalHandle(handle);
     const {instance} = splitHandle(handle);
-    if (instance === getCurrentInstance()) {
+    if (instance === getCurrentInstance() && isLoggedIn()) {
         return getLocalAccount(handle);
     }
 
