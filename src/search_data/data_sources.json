@@ -132,6 +132,39 @@
     }
   },
   {
+    "title":"Economics",
+    "source":"https://ideas.repec.org/i/emastodon.html",
+    "owners": [
+      {
+        "handle":"@czimm_economist@econtwitter.net",
+        "name":"Christian Zimmerman"
+      }
+    ],
+    "dataSource":
+    {
+      "url":"https://ideas.repec.org/i/emastodon.csv",
+      "type":"csv",
+      "options":{
+        "headers":false,
+        "delimiter":";"
+      },
+      "columns":[
+        {
+          "name":"repecId"
+        },
+        {
+          "name":"account"
+        },
+        {
+          "name":"handle"
+        },
+        {
+          "name":"keywords"
+        }
+      ]
+    }
+  },
+  {
     "title": "History and Philosophy of Science",
     "source": "https://oliviodare.github.io/mastodon-hps/",
     "signUp": {
