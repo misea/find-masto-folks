@@ -75,7 +75,7 @@ function AccountDetailsDeferred({loginUrl, curUrl}) {
     return (
         <>
         <AccountHeader userFollows={getUserFollowsImmediate() || new Set()} info={account} loggedIn={isLoggedIn()} loginUrl={loginUrl} /> 
-        {posts ?  posts.map((post)=><Post key={post.id} post={post} curUrl={curUrl}/>) : ""}
+        {posts ?  posts.map((post)=><Post key={post.id} post={post} userAccount={account} curUrl={curUrl}/>) : ""}
         </>
     )
 }

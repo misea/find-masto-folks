@@ -1,18 +1,17 @@
 // © 2023 Mark Igra <markigra@sciences.social>
 import { Link } from "react-router-dom";
-import { getCurrentInstance } from "./Mastodon";
+import { getCurrentInstance, canonicalHandle } from "./Mastodon";
 
 
-export default function Post({ post, curUrl }) {
+export default function Post({ post, userAccount, curUrl }) {
   const { account, sensitive, spoiler_text, content, media_attachments } = post.reblog || post;
   const linkForMore = spoiler_text | sensitive | media_attachments.length > 1 | (media_attachments.length === 1 && media_attachments[0].type !== "image");
   const image = media_attachments.length === 1 && media_attachments[0].type === "image" ? media_attachments[0] : null;
 
-  function personLink(handle) {
-    if (handle.indexOf("@")  === -1 || handle.lastIndexOf("@") === 0) {
-      handle = `${handle}@${getCurrentInstance()}`
-    }
-    return `/search/accounts/${handle}${curUrl.search}`
+  function personLink(handle, instance) {
+    handle = canonicalHandle(handle, instance);
+    let search = curUrl.match(/\?.*$/) || "";
+    return `/search/accounts/${handle}${search}`
   }
   
   return (
@@ -32,7 +31,7 @@ export default function Post({ post, curUrl }) {
               <i className="fa fa-retweet status__prepend-icon fa-fw"></i>
             </div>
             <span>
-              <Link to={personLink(post.account.acct)} className="status__display-name muted">
+              <Link to={personLink(post.account.acct, userAccount.instance)} className="status__display-name muted">
                 <bdi><strong>{post.account.display_name || post.account.username}</strong></bdi>
               </Link> boosted
             </span>
@@ -46,7 +45,7 @@ export default function Post({ post, curUrl }) {
                   <i className="fa fa-globe" title="Public"></i>
                 </span><time dateTime={post.created_at} title={new Date(post.created_at).toLocaleTimeString()}>{new Date(post.created_at).toLocaleDateString()}</time>
               </a>
-              <Link to={personLink(account.acct)} title={account.acct} className="status__display-name" >
+              <Link to={personLink(account.acct, userAccount.instance)} title={account.acct} className="status__display-name" >
                 <div className="status__avatar">
                   <div className="account__avatar" style={{width: "46px", height: "46px"}}>
                     <img src={account.avatar_static} alt={account.acct} />
