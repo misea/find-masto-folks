@@ -1,6 +1,6 @@
 // © 2023 Mark Igra <markigra@sciences.social>
 import { Link } from "react-router-dom";
-import { getCurrentInstance, canonicalHandle } from "./Mastodon";
+import { canonicalHandle } from "./Mastodon";
 
 
 export default function Post({ post, userAccount, curUrl }) {
