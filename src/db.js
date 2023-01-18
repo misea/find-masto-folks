@@ -9,17 +9,16 @@ let combinedData = null;
 const byField = new Map();
 
 async function loadData(listInfo) {
-  let downloadUrl = listInfo?.dataSource?.url;
-  if (!downloadUrl) {
-    const {host, pathname} = new URL(listInfo.source);
-    const repo = host.split(".")[0]
-    const sourceFileName = listInfo?.dataSource?.file || "users.csv";
-    downloadUrl = `https://raw.githubusercontent.com/${repo}${pathname}main/resources/${sourceFileName}`  
-  }
-
   function joinClean(...args) {return args.filter(arg=>arg!== undefined && arg !== null).join(" ")}
-  return loadCSV(downloadUrl).then((loaded)=>{
+  return loadCSV(listInfo).then((loaded)=>{
     let records = loaded.data
+    .map(record=>{
+      if(record["Account address"]) {
+        record.account = record["Account address"];
+        delete record["Account address"];
+      }
+      return record;
+    })
     .filter(record=>record.account && record.account.indexOf("@") !== -1)
     .map(record=>{
       record.account = canonicalHandle(record.account || record['Account address']);
@@ -37,9 +36,34 @@ async function loadData(listInfo) {
   });
 }
 
-async function loadCSV(url) {
+async function loadCSV(listInfo) {
+  const localName = listInfo?.build?.localName;
+  let downloadUrl = localName ? `/data/${localName}` : listInfo?.dataSource?.url;
+  if (!downloadUrl) {
+    const {host, pathname} = new URL(listInfo.source);
+    const repo = host.split(".")[0]
+    const sourceFileName = listInfo?.dataSource?.file || "users.csv";
+    downloadUrl = `https://raw.githubusercontent.com/${repo}${pathname}main/resources/${sourceFileName}`  
+  }
+  const options = listInfo?.dataSource?.options || {header:true};
+
   return new Promise((resolve, reject)=>{
-    Papa.parse(url, {download:true, header:true, complete:resolve, error:reject})
+    options.download = true;
+    options.complete = resolve;
+    options.error = reject;
+    Papa.parse(downloadUrl, options)
+  }).then(res=>{
+    if (!options.header && res.data) {
+      const colNames = listInfo.dataSource.columns.map(col=>col.name);
+      res.data = res.data.map(rowArray=>{
+        const rowObj = {};
+        for(let i = 0; i < colNames.length; i++) {
+          rowObj[colNames[i]] = rowArray[i];
+        }
+        return rowObj;
+      })
+    }
+    return res;
   });
 }
 
