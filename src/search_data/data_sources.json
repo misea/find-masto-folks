@@ -101,6 +101,24 @@
     }
   },
   {
+    "title": "Communications",
+    "source": "https://joshbraun.umasscreate.net/commodon/",
+    "owners": [
+      {
+        "handle": "@josh@sciences.social",
+        "name": "Josh Braun"
+      }
+    ],
+    "dataSource":{
+      "type": "csv",
+      "url": "https://joshbraun.umasscreate.net/commodon/data/commodon.csv"
+    },
+    "build": {
+      "copy":true,
+      "localName":"commodon.csv"
+    }
+  },
+  {
     "title": "Dendrochronology",
     "source": "https://ronaldvisser.github.io/Mastodon-Dendrochronology/",
     "owners": [
@@ -143,25 +161,11 @@
     "dataSource":
     {
       "url":"https://ideas.repec.org/i/emastodon.csv",
-      "type":"csv",
-      "options":{
-        "headers":false,
-        "delimiter":";"
-      },
-      "columns":[
-        {
-          "name":"repecId"
-        },
-        {
-          "name":"account"
-        },
-        {
-          "name":"handle"
-        },
-        {
-          "name":"keywords"
-        }
-      ]
+      "type":"csv"
+    },
+    "build": {
+      "copy":true,
+      "localName":"emastodon.csv"
     }
   },
   {

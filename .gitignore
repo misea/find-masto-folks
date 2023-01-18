@@ -13,6 +13,7 @@
 
 # data fetch
 /data/csvs/*
+/public/data/*.csv
 /src/search_data/combined.json
 
 # misc

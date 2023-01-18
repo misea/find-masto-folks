@@ -12,6 +12,13 @@ async function loadData(listInfo) {
   function joinClean(...args) {return args.filter(arg=>arg!== undefined && arg !== null).join(" ")}
   return loadCSV(listInfo).then((loaded)=>{
     let records = loaded.data
+    .map(record=>{
+      if(record["Account address"]) {
+        record.account = record["Account address"];
+        delete record["Account address"];
+      }
+      return record;
+    })
     .filter(record=>record.account && record.account.indexOf("@") !== -1)
     .map(record=>{
       record.account = canonicalHandle(record.account);
@@ -30,7 +37,8 @@ async function loadData(listInfo) {
 }
 
 async function loadCSV(listInfo) {
-  let downloadUrl = listInfo?.dataSource?.url;
+  const localName = listInfo?.build?.localName;
+  let downloadUrl = localName ? `/data/${localName}` : listInfo?.dataSource?.url;
   if (!downloadUrl) {
     const {host, pathname} = new URL(listInfo.source);
     const repo = host.split(".")[0]
