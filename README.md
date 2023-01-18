@@ -27,6 +27,14 @@ Yes, that is a frequently asked question.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Since a couple of the lists cannot be retrieved directly from the browser, I copy them at build time with permission from the
+owners. You must run 
+
+`node pre-build/get_data.js` 
+
+to copy those files before running `npm start` as described below. 
+The pre-build script is run as part of `npm run build` so no need to do it then.
+
 
 ## Available Scripts
 

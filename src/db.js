@@ -21,7 +21,7 @@ async function loadData(listInfo) {
     })
     .filter(record=>record.account && record.account.indexOf("@") !== -1)
     .map(record=>{
-      record.account = canonicalHandle(record.account || record['Account address']);
+      record.account = canonicalHandle(record.account);
       record.name = record.name && record.name !== "–" ? record.name.trim() : record.account.split("@")[1];
       record.field = listInfo.title;
       record.searchText = joinClean(record.account, record.name, record.field, record.keywords, record.intro);
