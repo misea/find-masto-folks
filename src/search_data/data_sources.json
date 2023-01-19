@@ -14,38 +14,7 @@
     "dataSource": {
       "type": "csv",
       "file": "anthropologists.csv",
-      "url": "https://raw.githubusercontent.com/fivestone/fedi-anthropologists/main/resources/anthropologists.csv",
-      "columns": [
-        {
-          "name": "timestamp",
-          "type": "timestamp"
-        },
-        {
-          "name": "account",
-          "use": "handle"
-        },
-        {
-          "name": "link",
-          "use": "url"
-        },
-        {
-          "name": "twitter",
-          "use": "twitterHandle"
-        },
-        {
-          "name": "keywords",
-          "use": "tags",
-          "separator": "comma"
-        },
-        {
-          "name": "language",
-          "use": "language"
-        },
-        {
-          "name": "intro",
-          "use": "info"
-        }
-      ]
+      "url": "https://raw.githubusercontent.com/fivestone/fedi-anthropologists/main/resources/anthropologists.csv"
     }
   },
   {
@@ -166,6 +135,45 @@
     "build": {
       "copy":true,
       "localName":"emastodon.csv"
+    }
+  },
+  {
+    "title":"Education",
+    "source":"https://docs.google.com/spreadsheets/d/1beJHWsuB0MJDMqeg_q8pBRWRdQImY-n8E6PttoJLFaM/edit#gid=2032266685",
+    "owners": [
+      {
+        "handle":"@mguhlin@mastodon.education",
+        "name":"J. M. Guhlin"
+      }
+    ],
+    "dataSource":{
+      "url":"https://docs.google.com/spreadsheets/d/1beJHWsuB0MJDMqeg_q8pBRWRdQImY-n8E6PttoJLFaM/export?format=csv",
+      "type":"csv",
+      "skipRows":1,
+      "columns":[
+        {
+          "skip":true
+        },
+        {
+          "name":"name"
+        },
+        {
+          "name":"intro"
+        },
+        {
+          "skip":true
+        },
+        {
+          "name":"account"
+        },
+        {
+          "skip":true,
+          "name":"app"
+        },
+        {
+          "name":"keywords"
+        }
+      ]
     }
   },
   {
