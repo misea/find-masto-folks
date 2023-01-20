@@ -69,7 +69,7 @@ export default function AccountHeader({info, loggedIn, loginUrl, userFollows}) {
         )
 }
 
-export function AccountHeaderPlaceholder({handle}) {
+export function AccountHeaderPlaceholder({handle, message}) {
     return (<div className="account__header">
       <div className="account__header__image">
         <div className="account__header__info">
@@ -89,6 +89,7 @@ export function AccountHeaderPlaceholder({handle}) {
         <div className="account__header__tabs__name">
           <h1><span>&nbsp;</span> <small>{handle} </small></h1>
         </div>
+        {message ? <div>{message}</div> : ""}
       </div>
     </div>)
       
