@@ -207,6 +207,49 @@
     }
   },
   {
+    "title":"Law",
+    "source":"https://docs.google.com/spreadsheets/d/1nE8WxgwTFCuVeFA8ZfOW0qonJTSnI_d6EBSJ4E9JqtI/edit#gid=1859751282",
+    "owners":[
+      {
+        "name":"Heidi Li Feldman",
+        "handle":"@heidilifeldman@mastodon.social"
+      }
+    ],
+    "dataSource":{
+      "type":"csv",
+      "url":"https://docs.google.com/spreadsheets/d/1nE8WxgwTFCuVeFA8ZfOW0qonJTSnI_d6EBSJ4E9JqtI/export?format=csv",
+      "skipRows":2,
+      "columns":[
+        {
+          "skip":true
+        },
+        {
+          "name":"name"
+        },
+        {
+          "name":"account"
+        },
+        {
+          "skip":true
+        },
+        {
+          "name":"keywords"
+        },
+        {
+          "name":"jurisdictions",
+          "skip":true
+        },
+        {
+          "name":"intro"
+        }
+      ]
+    },
+    "build": {
+      "copy":true,
+      "localName":"law.csv"
+    }
+  },
+  {
     "title": "Marketing and Consumer Research",
     "source": "https://lpomfret.github.io/Mastodon-Marketing/",
     "dataSource": {
