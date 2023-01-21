@@ -2,7 +2,7 @@
 // © 2023 Mark Igra <markigra@sciences.social>
 import escapeRegExp from "lodash.escaperegexp"
 import Papa from "papaparse"
-import { canonicalHandle } from "./Mastodon"
+import { canonicalHandle, splitHandle } from "./Mastodon"
 import dataSources from "./search_data/data_sources.json"
 
 let combinedData = null;
@@ -22,7 +22,7 @@ async function loadData(listInfo) {
     .filter(record=>record.account && record.account.indexOf("@") !== -1)
     .map(record=>{
       record.account = canonicalHandle(record.account);
-      record.name = record.name && record.name !== "–" ? record.name.trim() : record.account.split("@")[1];
+      record.name = record.name && record.name !== "–" ? record.name.trim() : splitHandle(record.account).userName;
       record.field = listInfo.title;
       record.searchText = joinClean(record.account, record.name, record.field, record.keywords, record.intro);
       return record;
@@ -45,20 +45,22 @@ async function loadCSV(listInfo) {
     const sourceFileName = listInfo?.dataSource?.file || "users.csv";
     downloadUrl = `https://raw.githubusercontent.com/${repo}${pathname}main/resources/${sourceFileName}`  
   }
-  const options = listInfo?.dataSource?.options || {header:true};
+  const renameColumns = listInfo?.dataSource?.columns !== undefined;
 
   return new Promise((resolve, reject)=>{
-    options.download = true;
-    options.complete = resolve;
-    options.error = reject;
-    Papa.parse(downloadUrl, options)
+    Papa.parse(downloadUrl, {download:true, header:!renameColumns, complete:resolve, error:reject})
   }).then(res=>{
-    if (!options.header && res.data) {
-      const colNames = listInfo.dataSource.columns.map(col=>col.name);
+    if (listInfo?.dataSource?.skipRows) {
+      res.data = res.data.slice(listInfo.dataSource.skipRows)
+    }
+    if (renameColumns && res.data) {
+      const colNames = listInfo.dataSource.columns.map(col=>col.name && !col.skip ? col.name : null);
       res.data = res.data.map(rowArray=>{
         const rowObj = {};
         for(let i = 0; i < colNames.length; i++) {
-          rowObj[colNames[i]] = rowArray[i];
+          if (colNames[i]) {
+            rowObj[colNames[i]] = rowArray[i];
+          }
         }
         return rowObj;
       })

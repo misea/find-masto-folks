@@ -51,7 +51,7 @@ export default function AccountDetails() {
             errorElement
           }
         >
-          <AccountDetailsDeferred loginUrl={loginUrl} curUrl={accountUrl} />
+          <AccountDetailsDeferred loginUrl={loginUrl} curUrl={accountUrl} handle={handle} />
         </Await>
       </Suspense>
      </div>
@@ -61,15 +61,17 @@ export default function AccountDetails() {
 );
 }
 
-function AccountDetailsDeferred({loginUrl, curUrl}) {
+function AccountDetailsDeferred({loginUrl, curUrl, handle}) {
     const account = useAsyncValue();
     const [posts, setPosts] = useState(null);
     useEffect(()=>{
-        getPosts(account).then(posts=>setPosts(posts))
+      if (account) {
+        getPosts(account).then(posts=>setPosts(posts));
+      }
     });
 
     if (!account) {
-        return <div>Could not retieve account information.</div>
+        return <AccountHeaderPlaceholder handle={handle} message="Account is not available." />
     }
 
     return (

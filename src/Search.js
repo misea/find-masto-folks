@@ -75,7 +75,7 @@ export default function Search() {
             <div className="columns-area__panels">
                 <div className={`column results ${isAccountPage ? "placeholder" : ""}`}>
                     {noAccountsMessage || 
-                    <Results accounts={accounts} userFollows={userFollows || new Set()} makeAccountLink={makeAccountLink} showField={field === "all"}/>}
+                    <Results accounts={accounts} userFollows={userFollows || new Set()} makeAccountLink={makeAccountLink} showField={!field || field === "all"}/>}
                 </div>
                 <Outlet  />
             </div>

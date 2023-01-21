@@ -45,7 +45,7 @@ function Source({ source }) {
       {source.owners.length === 1 ? "Owner: " : "Owners: "}
       {
         source.owners.map((owner, index, owners) =>
-          <span key={owner.handle || owner.email}>
+          <span key={index}>
             {index > 0 ? (index === owners.length - 1 ? " and " : ", ") : ""}
             <Owner owner={owner} />
           </span>
