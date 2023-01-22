@@ -1,0 +1,16 @@
+name: Trigger Vercel Redeploy Daily
+
+on:
+  schedule:
+    # Runs "at minute 55 past every hour" (see https://crontab.guru)
+    - cron: '55 6 * * *'
+jobs:
+  build:
+    name: Redeploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: cURL request
+        env: 
+          REDEPLOY: ${{ secrets.REDEPLOY_URL }}
+        # Hit the webhook endpoint to rebuild  from the "main" branch
+        run: curl -X GET $REDEPLOY
