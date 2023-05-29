@@ -19,7 +19,7 @@
   },
   {
     "title": "Archaeology",
-    "source": "https://stark1tty.github.io/Mastodon-Archaeology/",
+    "source": " ",
     "owners": [
       {
         "handle": "@NikaShilobod@fediscience.org",
@@ -175,6 +175,28 @@
         }
       ]
     }
+  },
+  {
+    "title":"Geography",
+    "source":"https://lejun.codeberg.page/Mastodon-Geography/",
+    "dataSource":{
+      "type":"csv",
+      "url":"https://codeberg.org/lejun/Mastodon-Geography/raw/branch/main/resources/users.csv"
+    },
+    "signUp": {
+      "type":"email",
+      "email":"lejun@gmx.fr"
+    },
+    "owners": [
+      {
+        "name":"LeJun",
+        "email":"lejun@gmx.fr"
+      },
+      {
+        "name":"Rob Kitchin",
+        "handle":"@robkitchin@mastodon.social"
+      }
+    ]
   },
   {
     "title": "History and Philosophy of Science",
