@@ -22,7 +22,8 @@ async function loadData(listInfo) {
     .filter(record=>record.account && record.account.indexOf("@") !== -1)
     .map(record=>{
       record.account = canonicalHandle(record.account);
-      record.name = record.name && record.name !== "–" ? record.name.trim() : splitHandle(record.account).userName;
+      //Need to account for all the different versions of dash that show up as missing
+      record.name = record.name && record.name.match(/^[ \u002D\u2012\u2013\u2014]*$/u) === null ? record.name.trim() : splitHandle(record.account).userName;
       record.field = listInfo.title;
       record.searchText = joinClean(record.account, record.name, record.field, record.keywords, record.intro);
       return record;

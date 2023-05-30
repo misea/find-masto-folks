@@ -196,7 +196,11 @@
         "name":"Rob Kitchin",
         "handle":"@robkitchin@mastodon.social"
       }
-    ]
+    ],
+    "build": {
+      "copy":true,
+      "localName":"geography.csv"
+    }
   },
   {
     "title": "History and Philosophy of Science",
