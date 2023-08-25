@@ -15,7 +15,7 @@ export default function Person({info, showField, userFollows, accountUrl, userHa
                             </bdi>
                             <span className="display-name__account">{info.account}</span>
                             {info.keywords && <div className="keywords">{info.keywords}</div>}
-                        {info.intro && <div>{info.intro}</div>}
+                        {info.intro && <div className="intro">{info.intro}</div>}
                         </span>
                     </Link>
                     {userHandle ?

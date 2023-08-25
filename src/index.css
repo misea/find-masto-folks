@@ -163,6 +163,11 @@ body {
   white-space: normal;
 }
 
+.intro {
+  white-space: normal;
+  margin-top: 3px;
+}
+
 .loading {
   opacity: 0.25;
   transition: opacity 200ms;

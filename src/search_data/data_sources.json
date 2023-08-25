@@ -102,6 +102,50 @@
     }
   },
   {
+    "title": "Digital Humanists",
+    "source": "https://docs.google.com/spreadsheets/d/15Ak4VHCnr_4Stkzkz-_RhOgX-jCJMt0oq0GN9XXDaKo/edit?pli=1#gid=229844055",
+    "owners": [
+      {
+        "handle": "@quinnanya@mstdn.social",
+        "name": "Quinn Dombrowski"
+      },
+      {
+        "handle": "@felwert@mstdn.social",
+        "name": "Frederick Elwert"
+      }
+    ],
+    "dataSource":{
+      "type":"csv",
+      "url":"https://docs.google.com/spreadsheets/d/15Ak4VHCnr_4Stkzkz-_RhOgX-jCJMt0oq0GN9XXDaKo/export?format=csv",
+      "skipRows":2,
+      "columns":[
+        {
+          "skip":true
+        },
+        {
+          "name":"name"
+        },
+        {
+          "name":"account"
+        },
+        {
+          "skip":true
+        },
+        {
+          "name":"intro"
+        }
+      ]
+    },
+    "build": {
+      "copy":true,
+      "localName":"digital_humanists.csv"
+    },
+    "signUp": {
+      "type": "form",
+      "url": "https://forms.gle/fDLWhuvsv82LEeKq8"
+    }
+  },
+  {
     "title": "Earth Science",
     "source": "https://all-geo.org/mastodon-earthsci/",
     "signUp": {
@@ -217,6 +261,28 @@
     "dataSource": {
       "type": "csv",
       "file": "hpsers.csv"
+    }
+  },
+  {
+    "title": "Human-Computer Interaction",
+    "source": "https://directory.hci.social/",
+    "dataSource":{
+      "type":"csv",
+      "url":"https://directory.hci.social/full.csv"
+    },
+    "owners": [
+      {
+        "handle": "@julian@fietkau.social",
+        "name": "Julian Fietkau"
+      }
+    ],
+    "signUp": {
+      "type": "form",
+      "url":"https://directory.hci.social/"
+    },
+    "build": {
+      "copy":true,
+      "localName":"hci.csv"
     }
   },
   {

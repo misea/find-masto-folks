@@ -22,6 +22,10 @@ async function loadData(listInfo) {
     .filter(record=>record.account && record.account.indexOf("@") !== -1)
     .map(record=>{
       record.account = canonicalHandle(record.account);
+      //Some keywords comma separated list without spaces
+      if (record.keywords && record.keywords.indexOf(",") != -1) {
+        record.keywords = record.keywords.split(/, */).join(", "); 
+      }
       //Need to account for all the different versions of dash that show up as missing
       record.name = record.name && record.name.match(/^[ \u002D\u2012\u2013\u2014]*$/u) === null ? record.name.trim() : splitHandle(record.account).userName;
       record.field = listInfo.title;
