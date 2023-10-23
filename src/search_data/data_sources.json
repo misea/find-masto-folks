@@ -56,6 +56,20 @@
     }
   },
   {
+    "title": "Audition",
+    "source": "https://leovarnet.github.io/Mastodon-Audition/",
+    "owners": [
+      {
+        "handle": "@leovarnet@qoto.org",
+        "name": "Leo Varnet"
+      }
+    ],
+    "signUp": {
+      "type": "form",
+      "url": "https://framaforms.org/audition-scientists-on-mastodon-1697965056"
+    }
+  },
+  {
     "title": "Bioinformatics",
     "source": "https://emiller88.github.io/Mastodon-Bioinformatics/",
     "owners": [
