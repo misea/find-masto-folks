@@ -12,7 +12,6 @@
 /build
 
 # data fetch
-/pre-build/csvs
 /public/data/*.csv
 /src/search_data/combined.json
 
