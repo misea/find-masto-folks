@@ -1,7 +1,8 @@
 // © 2023 Mark Igra <markigra@sciences.social>
 import {Suspense, useEffect, useState} from "react";
 import { defer, useLoaderData, Await, useAsyncValue, Link } from "react-router-dom";
-import { getAccount, getPosts, isLoggedIn, getUserFollowsImmediate } from "./Mastodon";
+import { getPosts, isLoggedIn, getUserFollowsImmediate } from "./Mastodon";
+import {getAccount} from "./db"
 import Post from "./Post";
 import AccountHeader, {AccountHeaderPlaceholder} from "./AccountHeader"
 import LoginForm from "./LoginForm";
@@ -10,7 +11,10 @@ import {Helmet} from "react-helmet-async";
 export async function loader({request, params}) {
     try {
         //Returns a promise. Going to defer/Await this
-        const account = getAccount(params.accountHandle);
+        const url = new URL(request.url);
+        const field = url.searchParams.get("field")
+    
+        const account = getAccount(params.accountHandle, field === "all" ? null : field);
         return defer({account, handle:params.accountHandle});
     } catch (e) {
         console.error(e);
@@ -28,7 +32,7 @@ export default function AccountDetails() {
     //TODO: Move these to defer as well? But can only Await one promise so have to do some kind of "all"
     
     const errorElement = 
-        isLoggedIn() ? <div class="error">Couldn't load data for {handle}</div> :
+        isLoggedIn() ? <div className="error">Couldn't load data for {handle}</div> :
              <>
                 <div className="app-text">
                     <p>It looks like you cannot access information about this user without logging in.</p>
@@ -71,7 +75,7 @@ function AccountDetailsDeferred({loginUrl, curUrl, handle}) {
     });
 
     if (!account) {
-        return <AccountHeaderPlaceholder handle={handle} message="Account is not available." />
+        return <AccountHeaderPlaceholder handle={handle} message="Account not found." />
     }
 
     return (

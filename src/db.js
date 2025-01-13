@@ -2,7 +2,7 @@
 // © 2023 Mark Igra <markigra@sciences.social>
 import escapeRegExp from "lodash.escaperegexp"
 import Papa from "papaparse"
-import { canonicalHandle, splitHandle } from "./Mastodon"
+import { canonicalHandle, splitHandle, getAccount as getMastodonAccount } from "./Mastodon"
 import dataSources from "./search_data/data_sources.json"
 
 let combinedData = null;
@@ -23,7 +23,7 @@ async function loadData(listInfo) {
     .map(record=>{
       record.account = canonicalHandle(record.account);
       //Some keywords comma separated list without spaces
-      if (record.keywords && record.keywords.indexOf(",") != -1) {
+      if (record.keywords && record.keywords.indexOf(",") !== -1) {
         record.keywords = record.keywords.split(/, */).join(", "); 
       }
       //Need to account for all the different versions of dash that show up as missing
@@ -38,6 +38,9 @@ async function loadData(listInfo) {
     });
     return records;
 
+  }).catch((e)=>{
+    console.error(`Error retrieving data from ${listInfo?.source}: ${e.message}`);
+    return [];
   });
 }
 
@@ -123,6 +126,23 @@ export async function ensureAllFieldData() {
   
 }
 
+//Fix bug: Make sure that only accounts found in field are displayed
+export async function getAccount(accountHandle, fieldId) {
+  accountHandle = canonicalHandle(accountHandle);
+  if (fieldId) {
+    await ensureFieldData(fieldId);
+    if (!byField.get(fieldId).accounts.find((val)=>val.account === accountHandle)) {
+      return null;
+    }
+    return getMastodonAccount(accountHandle);
+  } else {
+    await ensureAllFieldData();
+    if(!combinedData.find((val)=>val.account === accountHandle)) {
+      return null
+    };
+    return getMastodonAccount(accountHandle);
+  }
+}
 
 export async function getPeople(fieldId, queryString) {
     if (queryString) {
